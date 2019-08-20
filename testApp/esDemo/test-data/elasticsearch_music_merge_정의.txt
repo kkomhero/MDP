@@ -1,0 +1,346 @@
+0  "musicid",
+1  "videoid",
+2  "starttimecode",
+3  "endtimecode",
+4  "startframeindex",
+5  "endframeindex",
+6  "sequence",
+7  "album_packagelanguage",
+8  "album_titleofficial",
+9  "album_year",
+10 "album_genrelevel1",
+11 "album_genrelevel2",
+12 "album_genrelevel3",
+13 "album_albumlabel",
+14 "album_totalinset",
+15 "album_discinset",
+16 "album_trackcount",
+17 "album_coverarturl",
+18 "album_track_trackgnid",
+19 "album_track_tracknumber",
+20 "album_track_titleofficial",
+21 "createtime",
+24 "modifytime",
+32 "album_credit_nameofficial",
+33 "album_credit_originlevel1",
+34 "album_credit_originlevel2",
+35 "album_credit_originlevel3",
+36 "album_credit_originlevel4",
+37 "album_credit_eralevel1",
+38 "album_credit_eralevel2",
+39 "album_credit_eralevel3",
+40 "album_credit_artisttypelevel1",
+41 "album_credit_artisttypelevel2",
+42 "isduplication"
+
+
+{
+	"template": "*merge_music",
+  	"order": 1,
+  	"mappings": {
+		"musicmerge": {
+			"properties": {
+				"musicid": {
+					"type": "long"
+				},
+				"videoid": {
+					"type": "long"
+				},
+				"jobid": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"starttimecode": {
+					"type": "date",
+					"format": "HH:mm:ss;SS||epoch_millis"
+				},
+				"endtimecode": {
+					"type": "date",
+					"format": "HH:mm:ss;SS||epoch_millis"
+				},
+				"startframeindex": {
+					"type": "long"
+				},
+				"endframeindex": {
+					"type": "long"
+				},
+				"sequence": {
+					"type": "long"
+				},
+				"album_packagelanguage": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_titleofficial": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_year": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_genrelevel1": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_genrelevel2": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_genrelevel3": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_albumlabel": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_totalinset": {
+					"type": "long"
+				},
+				"album_discinset": {
+					"type": "long"
+				},
+				"album_trackcount": {
+					"type": "long"
+				},
+				"album_coverarturl": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 1024
+						}
+					}
+				},
+				"album_track_trackgnid": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_track_tracknumber": {
+					"type": "long"
+				},
+				"album_track_titleofficial": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"createtime": {
+					"type": "date",
+					"format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis"
+				},
+				"modifytime": {
+					"type": "date",
+					"format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis"
+				},
+				"album_credit_nameofficial": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_credit_originlevel1": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_credit_originlevel2": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_credit_originlevel3": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_credit_originlevel4": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+
+				"album_credit_eralevel1": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_credit_eralevel2": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_credit_eralevel3": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_credit_artisttypelevel1": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"album_credit_artisttypelevel2": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"isduplication": {
+					"type": "integer"
+				}
+			}
+		}
+  	}
+}
+
+
+curl -XPUT -H 'Content-Type: application/json' 'localhost:9200/mymusicmerge/musicmerge/1' -d ' 
+{
+	"musicid" : 425745,
+	"videoid" : 84826,
+	"jobid" : "2e806b96-c9c1-4a2c-9a39-5cb26276d6ef",
+	"starttimecode" : "00:15:17;00",
+	"endtimecode" : "00:15:23;23",
+	"startframeindex" : 21980
+	"endframeindex" : 22147
+	"sequence" : 131
+	"album_packagelanguage" : "영어",
+	"album_titleofficial" : "Evolutionary [Disc 2]",
+	"album_year" : "2014",
+	"album_genrelevel1" : "R&B/힙합",
+	"album_genrelevel2" : "R&B/소울",
+	"album_genrelevel3" : "훵크",
+	"album_albumlabel" : "Avenue Records Catalog P&D",
+	"album_totalinset" : 2,
+	"album_discinset" : 2,
+	"album_trackcount" : 10,
+	"album_coverarturl" : "http://akamai-b.cdn.cddbp.net/cds/2.0/cover/8E58/081F/527A/7F15_large_front.jpg?cid=285322488",
+	"album_track_trackgnid" : "434338627-536D6D8B824B79867336A6C824C94BAF",
+	"album_track_tracknumber" : 2,
+	"album_track_titleofficial" : "Slippin\' Into Darkness",
+	"createtime" : "20190621154542",
+	"modifytime" : "20190621154543",
+	"album_credit_nameofficial" : "WAR",
+	"album_credit_originlevel1" : "북아메리카",
+	"album_credit_originlevel2" : "미국",
+	"album_credit_originlevel3" : "캘리포니아",
+	"album_credit_originlevel4" : "로스앤젤레스",
+	"album_credit_eralevel1" : "1970년대",
+	"album_credit_eralevel2" : "1970년대",
+	"album_credit_eralevel3" : "1970년대",
+	"album_credit_artisttypelevel1" : "남성",
+	"album_credit_artisttypelevel2" : "남성 그룹",
+	"isduplication" : 0
+}
+'
+
+
+curl -XGET 'localhost:9200/imsi_my_test/_mapping'
+
+
+
+curl -XPOST 'localhost:9200/victolee/blog/1?pretty' -d '{"postName" : "elasticsearch", "category" : "IT"}' 
+
+curl -XDELETE http://localhost:9200/myindex/
+curl -XDELETE http://localhost:9200/imsi_my_test/
+
+curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+curl -XGET 'localhost:9200/myindex3/_mapping'
+
+curl -XGET 'localhost:9200/_template'
+
+curl -XDELETE 'localhost:9200/_template/default_faceraw_template'
+
+curl -XDELETE 'localhost:9200/suicide_squad_hd_faceraw/face/13557307'
+
+curl -XGET 'localhost:9200/suicide_squad_hd_faceraw/faceraw/_count'
+
+
