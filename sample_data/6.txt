@@ -1,0 +1,556 @@
+{
+    "default_faceraw_template": {
+        "aliases": {},
+        "index_patterns": [
+            "*facemerge"
+        ],
+        "mappings": {
+            "facemerge": {
+                "properties": {
+                    "actorid": {
+                        "type": "long"
+                    },
+                    "createtime": {
+                        "format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis",
+                        "type": "date"
+                    },
+                    "endframeindex": {
+                        "type": "long"
+                    },
+                    "endtimecode": {
+                        "format": "HH:mm:ss;SS||epoch_millis",
+                        "type": "date"
+                    },
+                    "jobid": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "keyframeindex": {
+                        "type": "long"
+                    },
+                    "mergefaceid": {
+                        "type": "long"
+                    },
+                    "modifytime": {
+                        "format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis",
+                        "type": "date"
+                    },
+                    "startframeindex": {
+                        "type": "long"
+                    },
+                    "starttimecode": {
+                        "format": "HH:mm:ss;SS||epoch_millis",
+                        "type": "date"
+                    },
+                    "videoid": {
+                        "type": "long"
+                    }
+                }
+            }
+        },
+        "order": 1,
+        "settings": {}
+    },
+
+    
+    "default_musicmerge_template": {
+        "aliases": {},
+        "index_patterns": [
+            "*merge_music"
+        ],
+        "mappings": {
+            "musicmerge": {
+                "properties": {
+                    "album_albumlabel": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_coverarturl": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 1024,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_artisttypelevel1": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_artisttypelevel2": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_eralevel1": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_eralevel2": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_eralevel3": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_nameofficial": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_originlevel1": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_originlevel2": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_originlevel3": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_originlevel4": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_discinset": {
+                        "type": "long"
+                    },
+                    "album_genrelevel1": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_genrelevel2": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_genrelevel3": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_packagelanguage": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_titleofficial": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_totalinset": {
+                        "type": "long"
+                    },
+                    "album_track_titleofficial": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_track_trackgnid": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_track_tracknumber": {
+                        "type": "long"
+                    },
+                    "album_trackcount": {
+                        "type": "long"
+                    },
+                    "album_year": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "createtime": {
+                        "format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis",
+                        "type": "date"
+                    },
+                    "endframeindex": {
+                        "type": "long"
+                    },
+                    "endtimecode": {
+                        "format": "HH:mm:ss;SS||epoch_millis",
+                        "type": "date"
+                    },
+                    "isduplication": {
+                        "type": "integer"
+                    },
+                    "jobid": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "modifytime": {
+                        "format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis",
+                        "type": "date"
+                    },
+                    "musicid": {
+                        "type": "long"
+                    },
+                    "sequence": {
+                        "type": "long"
+                    },
+                    "startframeindex": {
+                        "type": "long"
+                    },
+                    "starttimecode": {
+                        "format": "HH:mm:ss;SS||epoch_millis",
+                        "type": "date"
+                    },
+                    "videoid": {
+                        "type": "long"
+                    }
+                }
+            }
+        },
+        "order": 1,
+        "settings": {}
+    },
+    "default_musicraw_template": {
+        "aliases": {},
+        "index_patterns": [
+            "*raw_music"
+        ],
+        "mappings": {
+            "musicraw": {
+                "properties": {
+                    "album_albumlabel": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_coverarturl": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 1024,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_artisttypelevel1": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_artisttypelevel2": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_eralevel1": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_eralevel2": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_eralevel3": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_nameofficial": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_originlevel1": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_originlevel2": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_originlevel3": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_credit_originlevel4": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_discinset": {
+                        "type": "long"
+                    },
+                    "album_genrelevel1": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_genrelevel2": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_genrelevel3": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_packagelanguage": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_titleofficial": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_totalinset": {
+                        "type": "long"
+                    },
+                    "album_track_titleofficial": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_track_trackgnid": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "album_track_tracknumber": {
+                        "type": "long"
+                    },
+                    "album_trackcount": {
+                        "type": "long"
+                    },
+                    "album_year": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "createtime": {
+                        "format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis",
+                        "type": "date"
+                    },
+                    "endframeindex": {
+                        "type": "long"
+                    },
+                    "endtimecode": {
+                        "format": "HH:mm:ss;SS||epoch_millis",
+                        "type": "date"
+                    },
+                    "jobid": {
+                        "fields": {
+                            "keyword": {
+                                "ignore_above": 256,
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "text"
+                    },
+                    "modifytime": {
+                        "format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis",
+                        "type": "date"
+                    },
+                    "musicid": {
+                        "type": "long"
+                    },
+                    "sequence": {
+                        "type": "long"
+                    },
+                    "startframeindex": {
+                        "type": "long"
+                    },
+                    "starttimecode": {
+                        "format": "HH:mm:ss;SS||epoch_millis",
+                        "type": "date"
+                    },
+                    "videoid": {
+                        "type": "long"
+                    }
+                }
+            }
+        },
+        "order": 1,
+        "settings": {}
+    }
+}

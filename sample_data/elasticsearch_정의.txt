@@ -1,0 +1,106 @@
+1. 데이터 정의
+
+0    mergefaceid     int
+1    videoid         int
+2    actorid         int 
+     jobid           string
+3    starttimecode   date (00:18:22;06)
+4    endtimecode     date (00:18:22;06)
+5    startframeindex  int 
+6    endframeindex    int 
+11   createtime       date (20190621151601) yyyymmddhhmmss
+13   modifytime       date (20190621151601) yyyymmddhhmmss
+20   keyframeindex     int   
+
+2. template mapping 등록
+
+curl --request PUT \
+  --url http://localhost:9200/_template/default_facemerge_template \
+  --header 'content-type: application/json' \
+  --data '
+{
+	"template": "*facemerge",
+  	"order": 1,
+  	"mappings": {
+		"facemerge": {
+			"properties": {
+				"mergefaceid": {
+					"type": "long"
+				},
+				"videoid": {
+					"type": "long"
+				},
+				"actorid": {
+					"type": "long"
+				},
+				"jobid": {
+					"type": "text",
+					"fields": {
+						"keyword": {
+							"type": "keyword",
+							"ignore_above": 256
+						}
+					}
+				},
+				"starttimecode": {
+					"type": "date",
+					"format": "HH:mm:ss;SS||epoch_millis"
+				},
+				"endtimecode": {
+					"type": "date",
+					"format": "HH:mm:ss;SS||epoch_millis"
+				},
+				"startframeindex": {
+					"type": "long"
+				},
+				"endframeindex": {
+					"type": "long"
+				},
+				"createtime": {
+					"type": "date",
+					"format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis"
+				},
+				"modifytime": {
+					"type": "date",
+					"format": "yyyyMMddHHmmss||yyyyMMdd||epoch_millis"
+				},
+				"keyframeindex": {
+					"type": "long"
+				}
+			}
+		}
+  	}
+}
+'
+
+** template 조회 및 삭제
+ curl -XGET 'localhost:9200/_template'
+ curl -XDELETE 'localhost:9200/_template/default_facemerge_template'
+
+
+3. default index를 생성
+
+curl -XPUT -H 'Content-Type: application/json' 'localhost:9200/myfacemerge/facemerge/1' -d ' 
+{
+	"mergefaceid" : 13557307,
+	"videoid" : 84826,
+	"actorid" : 145515,
+	"jobid" : "2e806b96-c9c1-4a2c-9a39-5cb26276d6ef",
+	"starttimecode" : "01:08:51;10",
+	"endtimecode" : "01:12:21;06",
+	"startframeindex" : 99030,
+	"endframeindex" : 104060,
+	"createtime" : "20190621151601",
+	"modifytime" : "20190621151601",
+	"keyframeindex" : 100360
+}
+'
+
+* index관련 명령
+ 조회 : curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+ 삭제 : curl -XDELETE 'http://localhost:9200/myfacemerge/'
+
+* 기타명령
+ count : curl -XGET 'localhost:9200/suicide_squad_hd_faceraw/faceraw/_count'
+ data  : curl -XGET 'http://localhost:9200/suicide_squad_hd_faceraw/_search'
+
