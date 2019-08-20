@@ -1,0 +1,279 @@
+curl -XPUT -H 'Content-Type: application/json' 'localhost:9200/imsi_my_test/person/1' -d ' 
+{
+	"id" : "2e806b96-c9c1-4a2c-9a39-5cb26276d6e0",
+	"username" : "lamhirh",
+	"message" : "haha haha",
+	"greetDate" : "2019-08-08 12:01:02.33"
+} 
+'
+
+
+curl -XGET 'localhost:9200/imsi_my_test/_mapping'
+
+
+
+curl -XPOST 'localhost:9200/victolee/blog/1?pretty' -d '{"postName" : "elasticsearch", "category" : "IT"}' 
+
+curl -XDELETE http://localhost:9200/myindex/
+curl -XDELETE http://localhost:9200/imsi_my_test/
+
+curl -XGET 'localhost:9200/_cat/indices?v&pretty'
+curl -XGET 'localhost:9200/myindex3/_mapping'
+
+curl -XGET 'localhost:9200/_template'
+
+
+curl -XGET 'localhost:9200/_template?v&pretty'
+
+curl -XDELETE 'localhost:9200/_template/default_faceraw_template'
+
+curl -XDELETE 'localhost:9200/suicide_squad_hd_faceraw/face/13557307'
+
+curl -XGET 'localhost:9200/suicide_squad_hd_faceraw/faceraw/_count'
+
+
+curl -XPUT -H 'Content-Type: application/json' 'http://localhost:9200/myindex2' -d '
+{
+	"mappings": {
+			"greetings": {
+				"properties": {
+					"greetDate": {
+						"type": "date"
+					},
+					"id": {
+						"type": "text",
+						"fields": {
+							"keyword": {
+								"type": "keyword",
+								"ignore_above": 256
+							}
+						}
+					},
+					"message": {
+						"type": "text",
+						"fields": {
+							"keyword": {
+								"type": "keyword",
+								"ignore_above": 256
+							}
+						}
+					},
+					"username": {
+						"type": "text",
+						"fields": {
+							"keyword": {
+								"type": "keyword",
+								"ignore_above": 256
+							}
+						}
+					}
+				}
+			}
+		}
+}
+'
+파일명규칙 -> 인덱스명 생성 규칙
+
+
+
+
+
+PUT _template/default_my_template
+{
+  "template": "myindex*",
+  "order": 1,
+  "mappings": {
+    "greetings" :{
+      "properties": {
+      	"id": {
+			"type": "text",
+			"fields": {
+				"keyword": {
+				"type": "keyword",
+				"ignore_above": 256
+				}
+			}
+		},
+		"message": {
+			"type": "text",
+			"fields": {
+				"keyword": {
+					"type": "keyword",
+					"ignore_above": 256
+				}
+			}
+		},
+		"username": {
+			"type": "text",
+			"fields": {
+				"keyword": {
+					"type": "keyword",
+					"ignore_above": 256
+				}
+			}
+		}
+      }
+    }
+  }
+}
+'
+
+{
+  "template": "*faceraw",
+  "order": 1,
+  "mappings": {
+    "greetings" :{
+      "properties": {
+      	"faceid": {
+			"type": "text",
+			"fields": {
+				"keyword": {
+				"type": "keyword",
+				"ignore_above": 256
+				}
+			}
+		},
+		"message": {
+			"type": "text",
+			"fields": {
+				"keyword": {
+					"type": "keyword",
+					"ignore_above": 256
+				}
+			}
+		},
+		"username": {
+			"type": "text",
+			"fields": {
+				"keyword": {
+					"type": "keyword",
+					"ignore_above": 256
+				}
+			}
+		}
+      }
+    }
+  }
+}
+
+curl -XPUT -H 'Content-Type: application/json' 'localhost:9200/myfaceraw/faceraw/1' -d ' 
+{
+	"faceid" : 13557307,
+	"videoid" : 84826,
+	"jobid" : "2e806b96-c9c1-4a2c-9a39-5cb26276d6ef",
+	"frameindex" : 123720,
+	"score" : 0.940298,
+	"actorid" : 145515,
+	"rectx" : 1,
+	"recty" : 2,
+	"rectw" : 3,
+	"recth" : 4
+} 
+'
+
+curl -XGET 'localhost:9200/imsi_my_test1/_mapping'
+
+
+{
+	"imsi_my_test1": {
+		"mappings": {
+			"faceraw": {
+				"properties": {
+					"actorid": {
+						"type": "long"
+					},
+					"faceid": {
+						"type": "long"
+					},
+					"frameindex": {
+						"type": "long"
+					},
+					"jobid": {
+						"type": "text",
+						"fields": {
+							"keyword": {
+								"type": "keyword",
+								"ignore_above": 256
+							}
+						}
+					},
+					"recth": {
+						"type": "long"
+					},
+					"rectw": {
+						"type": "long"
+					},
+					"rectx": {
+						"type": "integer"
+					},
+					"recty": {
+						"type": "integer"
+					},
+					"score": {
+						"type": "integer"
+					},
+					"videoid": {
+						"type": "integer"
+					}
+				}
+			}
+		}
+	}
+}
+
+{
+  "template": "*faceraw",
+  "order": 1,
+  "mappings": {
+	"face": {
+		"properties": {
+			"actorid": {
+				"type": "long"
+			},
+			"faceid": {
+				"type": "long"
+			},
+			"frameindex": {
+				"type": "long"
+			},
+			"jobid": {
+				"type": "text",
+				"fields": {
+					"keyword": {
+						"type": "keyword",
+						"ignore_above": 256
+					}
+				}
+			},
+			"recth": {
+				"type": "long"
+			},
+			"rectw": {
+				"type": "long"
+			},
+			"rectx": {
+				"type": "integer"
+			},
+			"recty": {
+				"type": "integer"
+			},
+			"score": {
+				"type": "float"
+			},
+			"videoid": {
+				"type": "integer"
+			}
+		}
+	}
+}
+}
+
+
+curl -XPUT -H 'Content-Type: application/json' 'localhost:9200/myindex/greetings/1' -d ' 
+{
+	"id": "2e806b96-c9c1-4a2c-9a39-5cb26276d6ef",
+	"username": "lamhirh",
+	"message": "haha haha",
+	"greetingday": "2019-08-08 12:01:02"
+}
+'
