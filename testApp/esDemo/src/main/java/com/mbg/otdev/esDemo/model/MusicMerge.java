@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.util.Date;
 
-@Document(indexName = "#{config.musicmergeindexName}", type = "musicmerge")
+//@Document(indexName = "#{config.musicmergeindexName}", type = "musicmerge")
 public class MusicMerge {
 
     @Id

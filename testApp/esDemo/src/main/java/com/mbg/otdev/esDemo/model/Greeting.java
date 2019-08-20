@@ -9,7 +9,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.util.Date;
 
-@Document(indexName = "#{config.saveIndexName}", type = "greetings")
+//@Document(indexName = "#{config.saveIndexName}", type = "greetings")
 //@Document(indexName = "myIndex", type = "greetings")
 public class Greeting {
 

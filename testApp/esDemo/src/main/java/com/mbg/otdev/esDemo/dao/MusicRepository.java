@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface MusicRepository extends ElasticsearchRepository<Music, Integer> {
-
+//@Repository
+//public interface MusicRepository extends ElasticsearchRepository<Music, Integer> {
+public interface MusicRepository  {
     //List<Face> findByActorid(Integer actorid);
 
 }

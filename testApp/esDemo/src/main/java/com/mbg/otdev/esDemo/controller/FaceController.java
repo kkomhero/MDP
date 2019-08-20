@@ -115,7 +115,8 @@ public class FaceController {
 
         System.out.println(faceList.size());
 
-        String indexName = fileName+"_raw_face";
+        //String indexName = "mdp_"+fileName+"_raw_face";
+        String indexName = "mdp_"+fileName;
         if ( !template.indexExists(indexName)) {
             template.createIndex(indexName);
         }
@@ -172,7 +173,7 @@ public class FaceController {
 
             String[] line;
             while ((line = csvReader.readNext()) != null) {
-                //pirintline(line);
+                pirintline(line);
 
                 FaceMerge face = new FaceMerge();
                 face.setMergefaceid(Integer.parseInt(line[0].trim() ));
@@ -216,7 +217,8 @@ public class FaceController {
 
         System.out.println(faceList.size());
 
-        String indexName = fileName+"_merge_face";
+        //String indexName = "mdp_"+fileName+"_merge_face";
+        String indexName = "mdp_"+fileName;
         if ( !template.indexExists(indexName)) {
             template.createIndex(indexName);
         }

@@ -6,8 +6,8 @@ spring:
     name: DeepmetaSaver
   data:
     elasticsearch:
-      cluster-name: elasticsearch_lamhirh
-      cluster-nodes: localhost:9300
+      cluster-name: docker-cluster
+      cluster-nodes: compute3:9300
 
 management:
   health:
@@ -16,7 +16,7 @@ management:
 
 config:
   saveIndexName: myindex
-  faceindexName: myfaceraw
-  facemergeindexName: myfacemerge
+  faceindexName: mdp_my_raw_face
+  facemergeindexName: mdp_my_merge_face
   musicindexName: mymusicraw
   musicmergeindexName: mymusicmerge

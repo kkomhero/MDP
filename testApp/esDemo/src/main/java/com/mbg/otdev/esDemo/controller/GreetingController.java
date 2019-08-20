@@ -16,38 +16,38 @@ import java.util.List;
 @RequestMapping("/api")
 public class GreetingController {
 
-    @Autowired
-    private GreetingService greetingService;
-
-    @Autowired
-    private config cfg;
-
-    @Autowired
-    GreetingRepository repository;
-    @Autowired
-    ElasticsearchTemplate template;
-
-
-
-    @ResponseBody
-    @RequestMapping(value = "/greetings", method = RequestMethod.GET)
-    public ResponseEntity<List<Greeting>> getAll() {
-        return new ResponseEntity<List<Greeting>>(greetingService.getAll(), HttpStatus.OK);
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/greetings", method = RequestMethod.POST)
-    public ResponseEntity<Greeting> insertGreeting(@RequestBody Greeting greeting) {
-
-        //template.createIndex("myindex3");
-        //template.putMapping(Greeting.class);
-        //template.refresh("myindex3");
-        //template.refresh(Greeting.class);
-
-        //cfg.setSaveIndexName("abindex1");
-        //System.out.println(cfg.getSaveIndexName());
-
-        return null;
-        //return new ResponseEntity<Greeting>(greetingService.create(greeting), HttpStatus.CREATED);
-    }
+//    @Autowired
+//    private GreetingService greetingService;
+//
+//    @Autowired
+//    private config cfg;
+//
+//    @Autowired
+//    GreetingRepository repository;
+//    @Autowired
+//    ElasticsearchTemplate template;
+//
+//
+//
+//    @ResponseBody
+//    @RequestMapping(value = "/greetings", method = RequestMethod.GET)
+//    public ResponseEntity<List<Greeting>> getAll() {
+//        return new ResponseEntity<List<Greeting>>(greetingService.getAll(), HttpStatus.OK);
+//    }
+//
+//    @ResponseBody
+//    @RequestMapping(value = "/greetings", method = RequestMethod.POST)
+//    public ResponseEntity<Greeting> insertGreeting(@RequestBody Greeting greeting) {
+//
+//        //template.createIndex("myindex3");
+//        //template.putMapping(Greeting.class);
+//        //template.refresh("myindex3");
+//        //template.refresh(Greeting.class);
+//
+//        //cfg.setSaveIndexName("abindex1");
+//        //System.out.println(cfg.getSaveIndexName());
+//
+//        return null;
+//        //return new ResponseEntity<Greeting>(greetingService.create(greeting), HttpStatus.CREATED);
+//    }
 }

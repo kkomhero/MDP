@@ -7,20 +7,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class MusicServiceImpl implements MusicService{
+//@Service
+//public class MusicServiceImpl implements MusicService{
+public class MusicServiceImpl {
 
-    @Autowired
-    private MusicRepository repository;
-
-    @Override
-    public List<Music> getAll() {
-        return null;
-    }
-
-    @Override
-    public Music create(Music music) {
-        return repository.save(music);
-    }
+//    @Autowired
+//    private MusicRepository repository;
+//
+//    @Override
+//    public List<Music> getAll() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Music create(Music music) {
+//        return repository.save(music);
+//    }
 
 }

@@ -48,7 +48,7 @@ public class ElasticSearchConfiguration {
 
         Settings esSetting = Settings.builder()
                 .put("cluster.name", clusterName)
-                .put("client.transport.sniff", true)
+                //.put("client.transport.sniff", true)
                 .build();
 
         TransportClient client = new PreBuiltTransportClient(esSetting);
