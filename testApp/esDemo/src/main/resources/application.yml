@@ -1,0 +1,22 @@
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: DeepmetaSaver
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch_lamhirh
+      cluster-nodes: localhost:9300
+
+management:
+  health:
+    elasticsearch:
+      enabled: false
+
+config:
+  saveIndexName: myindex
+  faceindexName: myfaceraw
+  facemergeindexName: myfacemerge
+  musicindexName: mymusicraw
+  musicmergeindexName: mymusicmerge
