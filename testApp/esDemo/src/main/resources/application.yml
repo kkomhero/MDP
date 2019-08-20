@@ -18,5 +18,5 @@ config:
   saveIndexName: myindex
   faceindexName: mdp_my_raw_face
   facemergeindexName: mdp_my_merge_face
-  musicindexName: mymusicraw
-  musicmergeindexName: mymusicmerge
+  musicindexName: mdp_my_raw_music
+  musicmergeindexName: mdp_my_merge_music

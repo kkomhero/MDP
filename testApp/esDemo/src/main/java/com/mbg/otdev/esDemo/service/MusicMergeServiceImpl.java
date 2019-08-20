@@ -1,25 +1,25 @@
 package com.mbg.otdev.esDemo.service;
 
-import com.mbg.otdev.esDemo.dao.MusicRepository;
-import com.mbg.otdev.esDemo.model.Music;
+import com.mbg.otdev.esDemo.dao.MusicMergeRepository;
+import com.mbg.otdev.esDemo.model.MusicMerge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class MusicServiceImpl implements MusicService{
+public class MusicMergeServiceImpl implements MusicMergeService{
 
     @Autowired
-    private MusicRepository repository;
+    private MusicMergeRepository repository;
 
     @Override
-    public List<Music> getAll() {
+    public List<MusicMerge> getAll() {
         return null;
     }
 
     @Override
-    public Music create(Music music) {
+    public MusicMerge create(MusicMerge music) {
         return repository.save(music);
     }
 
