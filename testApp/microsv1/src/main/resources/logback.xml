@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <!--
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+    https://github.com/spring-cloud-samples/sleuth-documentation-apps/blob/master/service1/src/main/resources/logback-spring.xml
+    -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[%-5level] %d{HH:mm:ss.SSS} [${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}] [%thread][%logger{36}][%method:%line] %msg%n </Pattern>
+
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<file>${user.home}/tcore-ic/apps/logs/service.log</file>-->
+        <file>/Users/lamhirh/Documents/workspace/MLP/logs/service.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 파일이 하루에 한개씩 생성된다 -->
+            <!--<fileNamePattern>${user.home}/tcore-ic/apps/logs/service.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <fileNamePattern>/Users/lamhirh/Documents/workspace/MLP/logs/service.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+            <!-- maxHIstory 설정은 위 부분에 롤링 정책에 따라 적용되 된다고 보면된다.
+             위 설정데로 라면 30일이 지난 파일은 삭제가 된다.-->
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>[%-5level] %d{HH:mm:ss.SSS} [${springAppName:-},%X{X-B3-TraceId:-}] [%thread][%logger{36}][%method:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--
+    <logger name="com.skt.tcore" level="DEBUG" />
+    <logger name="com.skt.tcore.collector.service.dao" level="INFO" />
+    !-->
+    <!--
+    <logger name="org.springframework.web" level="ERROR" />
+    <logger name="org.apache.kafka.clients" level="INFO"/>
+    <logger name="org.springframework.beans" level="INFO"/>
+    <logger name="org.springframework.core.env" level="INFO"/>
+    <logger name="org.springframework.jdbc" level="INFO"/>
+    -->
+    <!--
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="org.hibernate.validator" level="ERROR"/>
+    <logger name="springfox.documentation.spring" level="ERROR"/>
+    <logger name="org.apache.http" level="ERROR"/>
+    -->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <!-- <appender-ref ref="FILE" /> -->
+    </root>
+
+</configuration>
