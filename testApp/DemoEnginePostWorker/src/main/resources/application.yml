@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: local # 기본 환경 선택
+  application:
+    name: DemoEnginePostWorker
+server:
+  port: 7002
+
+---
+spring:
+  profiles: local
+  task :
+    fixedDelay: 10
+
+server:
+  port: 7002
+  servlet:
+    context-path: /mdp/Enginepost/v1/face

@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: local # 기본 환경 선택
+  application:
+    name: DemoEngineController
+server:
+  port: 7002
+
+---
+spring:
+  profiles: local
+  task :
+    fixedDelay: 10
+
+server:
+  port: 7001
+  servlet:
+    context-path: /mdp/Enginecontrol/v1/face
