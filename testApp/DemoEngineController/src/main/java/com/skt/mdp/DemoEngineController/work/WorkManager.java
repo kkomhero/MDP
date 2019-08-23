@@ -3,11 +3,13 @@ package com.skt.mdp.DemoEngineController.work;
 import com.skt.mdp.DemoEngineController.config.RunConfig;
 import com.skt.mdp.DemoEngineController.model.JobInfo;
 
+import com.skt.mdp.DemoEngineController.model.JobStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -46,13 +48,13 @@ public class WorkManager {
         return 1;
     }
 
-    public void setJobStauts (String mdpjobid, String status) {
-        log.debug("job status="+ mdpjobid +":"+ status);
+    public void setJobStauts (String mdpjobid, HashMap<String,String> resultMap) {
+        log.debug("job status="+ mdpjobid +":"+ resultMap.get("jobstatus"));
 
-        checkThread.setJobStatus(mdpjobid,status);
+        checkThread.setJobStatus(mdpjobid,resultMap);
     }
 
-    public String getJobStatus(String mdpjobid) {
+    public JobStatus getJobStatus(String mdpjobid) {
 
         return checkThread.getJobStatus(mdpjobid);
     }

@@ -1,5 +1,6 @@
 package com.skt.mdp.DemoEngineController.model;
 
+import java.util.HashMap;
 import java.util.concurrent.Future;
 
 public class JobStatus {
@@ -8,6 +9,7 @@ public class JobStatus {
     private String      completeMessage = null;
     private String      mdpJobId = null;
     private boolean     isConfirm = false;
+    private HashMap<String,String>  resultMap = new HashMap<>();
 
     public boolean isConfirm() {
         return isConfirm;
@@ -39,5 +41,13 @@ public class JobStatus {
 
     public void setMdpJobId(String mdpJobId) {
         this.mdpJobId = mdpJobId;
+    }
+
+    public HashMap<String, String> getResultMap() {
+        return resultMap;
+    }
+
+    public void setResultMap(HashMap<String, String> resultMap) {
+        this.resultMap = resultMap;
     }
 }

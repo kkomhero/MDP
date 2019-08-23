@@ -3,6 +3,7 @@ package com.skt.mdp.DemoEngineController.service;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skt.mdp.DemoEngineController.model.JobInfo;
+import com.skt.mdp.DemoEngineController.model.JobStatus;
 import com.skt.mdp.DemoEngineController.work.WorkManager;
 
 import org.slf4j.Logger;
@@ -36,7 +37,7 @@ public class FaceEngine {
         return rtn;
     }
 
-    public String getJobStatus(String mdpjobid) {
+    public JobStatus getJobStatus(String mdpjobid) {
 
         return workManager.getJobStatus(mdpjobid);
     }

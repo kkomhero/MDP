@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skt.mdp.DemoEngineController.config.RunConfig;
 import com.skt.mdp.DemoEngineController.model.ApiResponseMessage;
 import com.skt.mdp.DemoEngineController.model.JobInfo;
+import com.skt.mdp.DemoEngineController.model.JobStatus;
 import com.skt.mdp.DemoEngineController.service.FaceEngine;
 
 import org.slf4j.Logger;
@@ -67,11 +68,12 @@ public class DemoDeepMetaworkController {
     @GetMapping
     public ResponseEntity<String> jobStatus(@RequestParam String mdpJobId) {
 
-        String message = faceEngine.getJobStatus(mdpJobId);
+        //String message = faceEngine.getJobStatus(mdpJobId);
+        JobStatus jobstatus = faceEngine.getJobStatus(mdpJobId);
 
-        logger.info("job stataus message =" + message);
+        logger.info("job stataus message =" + jobstatus.getCompleteMessage());
 
-        ApiResponseMessage result = new ApiResponseMessage(mdpJobId, message, "Job create", "", "");
+        ApiResponseMessage result = new ApiResponseMessage(mdpJobId, jobstatus.getCompleteMessage() , "Job create", "", "", jobstatus.getResultMap().get("resultpath"));
         ObjectMapper mapper = new ObjectMapper();
         String resultJson = "";
         try {

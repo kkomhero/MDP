@@ -12,15 +12,18 @@ public class ApiResponseMessage {
     private String errorMessage;
     // Error Code
     private String errorCode;
- 
+
+    private String reusltPath;
+
     public ApiResponseMessage() {}
  
-    public ApiResponseMessage(String servieId, String status, String message, String errorCode, String errorMessage) {
+    public ApiResponseMessage(String servieId, String status, String message, String errorCode, String errorMessage, String resultPath) {
         this.servieId = servieId;
         this.status = status;
         this.message = message;
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
+        this.reusltPath = resultPath;
     }
 
 
@@ -93,5 +96,14 @@ public class ApiResponseMessage {
     public void setErrorCode(String errorCode) {
         this.errorCode = errorCode;
     }
+
+    public String getReusltPath() {
+        return reusltPath;
+    }
+
+    public void setReusltPath(String reusltPath) {
+        this.reusltPath = reusltPath;
+    }
+
 
 }

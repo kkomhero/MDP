@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.HashMap;
 
 public class Filework implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(Filework.class);
@@ -23,13 +24,17 @@ public class Filework implements Runnable {
         String jobstatus;
         //System.out.println("Filework="+runcfg.getOrgdir()+"::"+runcfg.getOrgdir());
         //System.out.println("start Filework");
+
+        HashMap<String,String> reulstMap = new HashMap<String,String>();
+        String resultpath = "";
         try {
             String saveDirectory = runcfg.getSavedir() +"/face/raw/"+mdpjabid;
             Path path = Paths.get(saveDirectory);
             Files.createDirectories(path);
 
+            resultpath = saveDirectory+"/suicide_squad_raw_face.csv";
             Path sourcepath = Paths.get(runcfg.getOrgdir()+"/suicide_squad_raw_face.csv");
-            Path destinationepath = Paths.get(saveDirectory+"/suicide_squad_raw_face.csv");
+            Path destinationepath = Paths.get(resultpath);
             Files.copy(sourcepath, destinationepath, StandardCopyOption.REPLACE_EXISTING);
 
             for(int i=0; i<10; i++) {
@@ -50,7 +55,9 @@ public class Filework implements Runnable {
         }
 
         if(workmanager != null) {
-            workmanager.setJobStauts(mdpjabid, jobstatus);
+            reulstMap.put("jobstatus",jobstatus);
+            reulstMap.put("resultpath",resultpath);
+            workmanager.setJobStauts(mdpjabid, reulstMap);
         }
     }
 

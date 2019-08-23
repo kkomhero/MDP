@@ -51,6 +51,7 @@ ps -ef | grep scheduler
 nohup airflow scheduler >> scheduler.out &
 exit
 
+사용자 UI : http://192.168.203.113:8089/admin/
 ---------------------
 
 

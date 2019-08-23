@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
 
@@ -44,28 +45,31 @@ public class CheckThreadstatus implements Runnable {
         threaMap.put(mdpjobid, js);
     }
 
-    public String getJobStatus(String mdpjobid) {
-        String rtn = "";
+    public JobStatus getJobStatus(String mdpjobid) {
+        //String rtn = "";
         JobStatus js = threaMap.get(mdpjobid);
 
         if(js == null) {
-            rtn = "Not found MDP Job";
+            js = new JobStatus();
+            js.setMdpJobId(mdpjobid);
+            js.setCompleteMessage("Not found MDP Job");
         }else {
-            rtn = js.getCompleteMessage();
+            js.getCompleteMessage();
         }
 
-        log.debug(mdpjobid+"="+rtn);
+        log.debug(mdpjobid+"="+js.getCompleteMessage());
 
         if(!js.getCompleteMessage().equalsIgnoreCase("Process")) {
             threaMap.remove(mdpjobid);
         }
 
-        return rtn;
+        return js;
     }
 
-    public void setJobStatus(String mdpjobid, String status) {
+    public void setJobStatus(String mdpjobid, HashMap<String,String> resultMap) {
         JobStatus js = threaMap.get(mdpjobid);
-        js.setCompleteMessage(status);
+        js.setCompleteMessage(resultMap.get("jobstatus"));
+        js.setResultMap(resultMap);
     }
 
 }
