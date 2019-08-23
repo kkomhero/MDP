@@ -1,119 +1,135 @@
 package com.skt.mdp.DemoEngineController.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * EpisodeInfo
+ * 에피소드 정보
  */
-public class EpisodeInfo   {
-  @JsonProperty("asis_cnts_id")
-  private String asisCntsId = null;
+@ApiModel(description = "에피소드 정보 ")
+@Validated
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class EpisodeInfo {
 
-  @JsonProperty("file_path_url")
-  private String filePathUrl = null;
+  /**
+   * 에피소드 Id
+   *
+   * @return episodeId
+   **/
+  @JsonProperty("episodeId")
+  private String episodeId = null;
 
-  @JsonProperty("rslu_file_nm")
-  private String rsluFileNm = null;
+  /**
+   * Content ID
+   *
+   * @return resolutionId
+   **/
+  @JsonProperty("resolutionId")
+  private String resolutionId = null;
 
-  @JsonProperty("sris_id")
-  private String srisId = null;
+  /**
+   * 파일경로 URL
+   *
+   * @return filePath
+   **/
+  @JsonProperty("filePath")
+  private String filePath = null;
 
-  @JsonProperty("sris_nm")
-  private String srisNm = null;
+  /**
+   * 재생시간 (초)
+   *
+   * @return playingTime
+   **/
+  @JsonProperty("playingTime")
+  private Integer playingTime = null;
 
-  @JsonProperty("play_tms_val")
-  private BigDecimal playTmsVal = null;
+  /**
+   * Content 파일명
+   *
+   * @return resolutionFileName
+   **/
+  @JsonProperty("resolutionFileName")
+  private String resolutionFileName = null;
 
-  public EpisodeInfo asisCntsId(String asisCntsId) {
-    this.asisCntsId = asisCntsId;
-    return this;
-  }
-    /**
-     * @return String return the asisCntsId
-     */
-    public String getAsisCntsId() {
-        return asisCntsId;
-    }
+  /**
+   * 시리즈 ID
+   *
+   * @return seriesId
+   **/
+  @JsonProperty("seriesId")
+  private String seriesId = null;
 
-    /**
-     * @param asisCntsId the asisCntsId to set
-     */
-    public void setAsisCntsId(String asisCntsId) {
-        this.asisCntsId = asisCntsId;
-    }
+  /**
+   * 시리즈 명
+   *
+   * @return seriesName
+   **/
+  @JsonProperty("seriesName")
+  private String seriesName = null;
 
-    /**
-     * @return String return the filePathUrl
-     */
-    public String getFilePathUrl() {
-        return filePathUrl;
-    }
+  /**
+   * 수집 타입 (Http, Ftp, s3...)
+   *
+   * @return contentCollectType
+   **/
+  @JsonProperty("dataSourceTypeCode")
+  private String dataSourceTypeCode = null;
 
-    /**
-     * @param filePathUrl the filePathUrl to set
-     */
-    public void setFilePathUrl(String filePathUrl) {
-        this.filePathUrl = filePathUrl;
-    }
+//  /**
+//   * 시스템 내부에서 사용하는 Episode Id
+//   *
+//   * @return mdpEpisodeId
+//   **/
+//  @ApiModelProperty(value = "시스템 내부에서 사용하는 Episode Id")
+//  @JsonProperty("mdpEpisodeId")
+//  private String mdpEpisodeId = null;
 
-    /**
-     * @return String return the rsluFileNm
-     */
-    public String getRsluFileNm() {
-        return rsluFileNm;
-    }
+//  /**
+//   * 시스템 내부에서 사용하는 시리즈 ID
+//   *
+//   * @return mdpSeriesId
+//   **/
+//  @ApiModelProperty(value = "시스템 내부에서 사용하는 시리즈 ID")
+//  @JsonProperty("mdpSeriesId")
+//  private String mdpSeriesId = null;
 
-    /**
-     * @param rsluFileNm the rsluFileNm to set
-     */
-    public void setRsluFileNm(String rsluFileNm) {
-        this.rsluFileNm = rsluFileNm;
-    }
 
-    /**
-     * @return String return the srisId
-     */
-    public String getSrisId() {
-        return srisId;
-    }
+  /**
+   * 마스터ID
+   *
+   * @return masterId
+   **/
+  @JsonProperty("masterId")
+  private String masterId = null;
 
-    /**
-     * @param srisId the srisId to set
-     */
-    public void setSrisId(String srisId) {
-        this.srisId = srisId;
-    }
+//  /**
+//   * 시스템 내부에서 사용하는 마스터ID
+//   *
+//   * @return mdpMasterId
+//   **/
+//  @ApiModelProperty(value = "시스템 내부에서 사용하는 마스터ID")
+//  @JsonProperty("mdpMasterId")
+//  private String mdpMasterId = null;
 
-    /**
-     * @return String return the srisNm
-     */
-    public String getSrisNm() {
-        return srisNm;
-    }
+//  /**
+//   * 시스템 내부에서 사용하는 Content ID
+//   *
+//   * @return mdpResolutionId
+//   **/
+//  @ApiModelProperty(value = "시스템 내부에서 사용하는 Content ID")
+//  @JsonProperty("mdpResolutionId")
+//  private String mdpResolutionId = null;
 
-    /**
-     * @param srisNm the srisNm to set
-     */
-    public void setSrisNm(String srisNm) {
-        this.srisNm = srisNm;
-    }
+  @JsonProperty("contentType")
+  private String contentType = null;
 
-    /**
-     * @return BigDecimal return the playTmsVal
-     */
-    public BigDecimal getPlayTmsVal() {
-        return playTmsVal;
-    }
-
-    /**
-     * @param playTmsVal the playTmsVal to set
-     */
-    public void setPlayTmsVal(BigDecimal playTmsVal) {
-        this.playTmsVal = playTmsVal;
-    }
-
-}
-
+} // end class : EpisodeInfo

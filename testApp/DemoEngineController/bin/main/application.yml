@@ -16,3 +16,7 @@ server:
   port: 7001
   servlet:
     context-path: /mdp/Enginecontrol/v1/face
+
+runconfig:
+  orgdir: /home/mdp/deepmeta_data/org
+  savedir: /home/mdp/deepmeta_data

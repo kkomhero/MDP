@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EsDemoApplication",
+            "request": "launch",
+            "mainClass": "com.mbg.otdev.esDemo.EsDemoApplication",
+            "projectName": "esDemo"
+        }
+    ]
+}

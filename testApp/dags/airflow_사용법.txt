@@ -1,0 +1,83 @@
+*** postgresql 설치 후
+
+postgresql 설치 후 postgres 계정으로 로그인 후 실행
+# psql -U postgres
+create DATABASE airflow;
+\q
+exit
+
+sudo systemctl start postgresql-9.6
+psql -h 192.168.203.113 -U postgres -d airflow
+
+*** airflow 설치
+
+docker pull puckel/docker-airflow
+docker run --name airflow -d -p 8089:8080 -e AIRFLOW__CORE__LOAD_EXAMPLES=False -e AIRFLOW__CORE_DAGBAG_IMPORT_TIMEOUT=10 \
+-e AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql://postgres:compass123@192.168.203.113/airflow \
+-e AIRFLOW__CORE__RESULT_BACKEND=db+postgresql://postgres:compass123@192.168.203.113/airflow \
+-e AIRFLOW__CORE__DEFAULT_TIMEZONE=Asia/Seoul puckel/docker-airflow webserver
+
+docker exec -u root -it airflow bash
+
+ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+mkdir dags
+apt-get update
+apt-get install vim
+apt-get install telnet
+apt-get install procps
+pip install requests
+
+vi airflow.cfg해서
+load_examples = False
+
+#executor = SequentialExecutor
+executor = LocalExecutor
+
+
+수정
+
+mkdir /usr/local/airflow/dags
+exit
+
+####dag 파일 설정 후
+docker cp dag.py airflow:/usr/local/airflow/dags/dag.py
+docker exec -u root -it airflow bash
+airflow list_dags
+airflow list_tasks dag_id
+
+kill -9 $(pgrep -f 'schedule')
+ps -ef | grep scheduler
+nohup airflow scheduler >> scheduler.out &
+exit
+
+---------------------
+
+
+docker exec -u root -it airflow bash
+
+docker cp face_enging_ctrl_demo.py airflow:/usr/local/airflow/dags/face_enging_ctrl_demo.py
+
+docker exec airflow airflow trigger_dag 'face_engine_demo' --conf '{"service_id" : "12345","episode_info": {"asis_cnts_id": "{8492D8BA-5896-450C-B0AB-F6E19894746F}","file_path_url": "/VOD/96/CS11009296/","play_tms_val": 10807,"rslu_file_nm": "CE1000147825_0_MOHD_201902202034ts","sris_id": "CS11009296","sris_nm": "EXO의 사다리타고 세계여행-가오슝/컨딩 편"},"epsd_id": "CE1000147825","meta_info": {"brcast_dt": "20190220000000","brcast_tseq_nm": "1","gnr_info": null,"manuf_country_nm": ["aaa"],"manuf_yr": "2016","manufco_nm": "SK broadand","meta_id": "MM1000144015","meta_title": "EXO의 사다리타고 세계여행-가오슝/컨딩 편","meta_typ_cd": "002","open_dy": "","people_info": [{"brth_ymd": "19900326","filmography": ["bbb"],"prs_id": "MP0000141243","prs_nm": "(EXO)","prs_role_cd": "10","sex_cd": "1","sort_seq": 3 }],"sub_title": "rrrrr","tot_tseq_ncnt": 0,"wat_lvl_cd": null}}'  -r 'run_id34'
+
+
+
+curl -X POST http://192.168.203.113:8089/api/experimental/dags/face_engine_demo/dag_runs -H 'Cache-Control: no-cache' -H 'Content-Type: application/json; charset=utf-8' -d '{"conf": "{\"service_id\" : \"12345\",\"episode_info\": {\"asis_cnts_id\": \"{8492D8BA-5896-450C-B0AB-F6E19894746F}\",\"file_path_url\": \"/VOD/96/CS11009296/\",\"play_tms_val\": 10807,\"rslu_file_nm\": \"CE1000147825_0_MOHD_201902202034ts\",\"sris_id\": \"CS11009296\",\"sris_nm\": \"EXO의 사다리타고 세계여행-가오슝/컨딩 편\"},\"epsd_id\": \"CE1000147825\",\"meta_info\": {\"brcast_dt\": \"20190220000000\",\"brcast_tseq_nm\": \"1\",\"gnr_info\": null,\"manuf_country_nm\": [\"aaa\"],\"manuf_yr\": \"2016\",\"manufco_nm\": \"SK broadand\",\"meta_id\": \"MM1000144015\",\"meta_title\": \"EXO의 사다리타고 세계여행-가오슝/컨딩 편\",\"meta_typ_cd\": \"002\",\"open_dy\": \"\",\"sub_title\": \"스타일리시 액션 모바일무비 <독고리와인드>\",\"tot_tseq_ncnt\": 0,\"wat_lvl_cd\": null,\"people_info\": [{\"brth_ymd\": \"19900326\",\"prs_id\": \"MP0000141243\",\"prs_nm\": \"시우민(EXO)\",\"prs_role_cd\": \"10\",\"sex_cd\": \"1\",\"sort_seq\": 3,\"filmography\": [\"bbb\"]}]}}"}'
+
+{"message":"Created <DagRun face_engine_demo @ 2019-07-09 08:37:51+00:00: manual__2019-07-09T08:37:51+00:00, externally triggered: True>"}
+
+------------------
+
+상태 조회 
+http://192.168.203.113:8089/api/experimental/dags/face_engine_demo/dag_runs/07-09T06:31:57+00:00
+http://192.168.203.113:8089/api/experimental/dags/face_engine_demo/dag_runs/2019-07-09T06:31:57+00:00
+
+-----------------
+
+
+
+airflow list_dags
+airflow list_tasks dag_id
+
+
+docker exec airflow airflow trigger_dag test_demo

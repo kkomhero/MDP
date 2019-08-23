@@ -1,0 +1,65 @@
+
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from datetime import datetime
+import requests, json
+
+default_args = {
+  'start_date': datetime.utcnow(),
+  'owner': 'airflow',
+}
+
+dag = DAG(
+    dag_id='test_demo',
+    default_args=default_args,
+    schedule_interval=None,
+)
+
+
+def run_test_func(ds, **kwargs):
+  json_val = json.dumps(kwargs['dag_run'].conf, ensure_ascii=False)
+  snd_val = json_val.encode('utf-8')
+
+  crt_url = 'http://192.168.203.113:7002/mdp/deepmeta/v1/service/mergeFaceinfo'
+
+  headers = {'Content-type': 'application/json; charset=utf-8', 'Accept': 'application/json'}
+  res = requests.get(crt_url, data=snd_val, headers=headers)
+
+  if res.status_code == 200:
+    print("success.........")
+  else:
+    print("fail.......")
+    raise ValueError('failed get results....')
+
+
+def run_test_func2(ds, **kwargs):
+  print("in run_test_func2.....")
+  json_val = json.dumps(kwargs['dag_run'].conf, ensure_ascii=False)
+  snd_val = json_val.encode('utf-8')
+  crt_url = 'http://192.168.203.113:7002/mdp/deepmeta/v1/service/faceinfo'
+
+  headers = {'Content-type': 'application/json; charset=utf-8', 'Accept': 'application/json'}
+  res = requests.get(crt_url, data=snd_val, headers=headers)
+
+  if res.status_code == 200:
+    print("success.........")
+  else:
+    print("fail.......")
+    raise ValueError('failed get results....')
+
+
+start_task = PythonOperator(
+    task_id ='test_demo_start',
+    python_callable=run_test_func,
+    provide_context=True,
+    dag=dag
+)
+
+second_task = PythonOperator(
+    task_id='test_demo_second',
+    provide_context=True,
+    python_callable=run_test_func2,
+    dag=dag
+)
+
+start_task >> second_task

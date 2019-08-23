@@ -2,87 +2,50 @@ package com.skt.mdp.DemoEngineController.model;
 
 import org.springframework.validation.annotation.Validated;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * JobInfo
+ * 작업 요청 세부 정보
  */
-public class JobInfo   {
-  @JsonProperty("service_id")
-  private String serviceId = null;
+@ApiModel(description = "작업 요청 세부 정보 ")
+@Validated
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class JobInfo {
 
-  @JsonProperty("epsd_id")
-  private String epsdId = null;
+  @JsonProperty("mdpJobId")
+  private String mdpJobId = null;
 
-  @JsonProperty("episode_info")
+  /**
+   * episodeInfo
+   *
+   * @return episodeInfo
+   **/
+  @JsonProperty("episodeInfo")
   private EpisodeInfo episodeInfo = null;
+  /**
+   * episodeMetaInfo
+   *
+   * @return episodeMetaInfo
+   **/
+  @JsonProperty("episodeMetaInfo")
+  private EpisodeMetaInfo episodeMetaInfo = null;
+  /**
+   * seriesMetaInfo
+   *
+   * @return seriesMetaInfo
+   **/
+  @JsonProperty("seriesMetaInfo")
+  private SeriesMetaInfo seriesMetaInfo = null;
 
-  @JsonProperty("meta_info")
-  private MetaInfo metaInfo = null;
+  @JsonProperty("workflowType")
+  private String workflowType = null;
 
-  public JobInfo serviceId(String serviceId) {
-    this.serviceId = serviceId;
-    return this;
-  }
-
-  
-  
-
-    /**
-     * @return String return the serviceId
-     */
-    public String getServiceId() {
-        return serviceId;
-    }
-
-    /**
-     * @param serviceId the serviceId to set
-     */
-    public void setServiceId(String serviceId) {
-        this.serviceId = serviceId;
-    }
-
-    /**
-     * @return String return the epsdId
-     */
-    public String getEpsdId() {
-        return epsdId;
-    }
-
-    /**
-     * @param epsdId the epsdId to set
-     */
-    public void setEpsdId(String epsdId) {
-        this.epsdId = epsdId;
-    }
-
-    /**
-     * @return EpisodeInfo return the episodeInfo
-     */
-    public EpisodeInfo getEpisodeInfo() {
-        return episodeInfo;
-    }
-
-    /**
-     * @param episodeInfo the episodeInfo to set
-     */
-    public void setEpisodeInfo(EpisodeInfo episodeInfo) {
-        this.episodeInfo = episodeInfo;
-    }
-
-    /**
-     * @return MetaInfo return the metaInfo
-     */
-    public MetaInfo getMetaInfo() {
-        return metaInfo;
-    }
-
-    /**
-     * @param metaInfo the metaInfo to set
-     */
-    public void setMetaInfo(MetaInfo metaInfo) {
-        this.metaInfo = metaInfo;
-    }
-
-}
-
+} // end class : JobInfo
