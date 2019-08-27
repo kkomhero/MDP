@@ -1,0 +1,21 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: DeepmetaSaver
+  data:
+    elasticsearch:
+      cluster-name: docker-cluster
+      cluster-nodes: compute3:9300
+
+management:
+  health:
+    elasticsearch:
+      enabled: false
+
+config:
+  saveIndexName: myindex
+  facerawindexName: mdp_my_raw_face
+  facemergeindexName: mdp_my_merge_face
+  musicindexName: mdp_my_raw_music
+  musicmergeindexName: mdp_my_merge_music
