@@ -14,13 +14,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FacefileReq {
 
-    @JsonProperty("filePath")
-    private String filePath;
+    @JsonProperty("reusltPath")
+    private String reusltPath;
 
     @JsonProperty("fileName")
     private String fileName;
 
     @JsonProperty("mdpJobId")
-    private String mdpJobId = null;
+    private String mdpJobId;
     
 }

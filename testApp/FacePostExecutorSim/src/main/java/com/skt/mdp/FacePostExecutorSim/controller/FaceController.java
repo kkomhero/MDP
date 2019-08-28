@@ -5,8 +5,10 @@ import com.skt.mdp.FacePostExecutorSim.config.runConfig;
 import com.skt.mdp.FacePostExecutorSim.model.ApiResponseMessage;
 import com.skt.mdp.FacePostExecutorSim.model.FacefileReq;
 import com.skt.mdp.FacePostExecutorSim.model.JobStatus;
+import com.skt.mdp.FacePostExecutorSim.service.SaveService;
 import com.skt.mdp.FacePostExecutorSim.work.workManager;
 
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,13 +31,14 @@ public class FaceController {
     runConfig runcfg;
     
 	@Autowired
-    private workManager workmanager;
+    workManager workmanager;
 
     @RequestMapping(value = "/face-raw", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> insertFacerawFromFile(@RequestBody FacefileReq facefilereq) {
 
         workmanager.executeFaceRaw(facefilereq);
+        //saveService.addfaceraw(facefilereq);
 
         String message = "Success";
         return new ResponseEntity<String>(message, HttpStatus.CREATED);
@@ -60,6 +63,7 @@ public class FaceController {
         }
 
         return new ResponseEntity<String>(resultJson, HttpStatus.OK);
+
     }
     
 }

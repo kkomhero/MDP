@@ -15,13 +15,13 @@ public class workStatusChecker implements Runnable {
 
     @Override
     public void run() {
-        Thread t = Thread.currentThread();
+        //Thread t = Thread.currentThread();
         try {
 
             while (!Thread.currentThread().isInterrupted()) {
                 for (String key : threaMap.keySet()) {
                     JobStatus status = threaMap.get(key);
-                    log.debug(key + "=" + status.getCompleteMessage());
+                    log.info(key + "=" + status.getCompleteMessage());
                 }
 
                 Thread.sleep(1000);
@@ -37,6 +37,7 @@ public class workStatusChecker implements Runnable {
     }
 
     public void addJob(String mdpjobid, Future<?> future) {
+        log.info("add job mdpjobid="+mdpjobid);
         JobStatus js = new JobStatus();
         js.setMdpJobId(mdpjobid);
         js.setFuture(future);
@@ -46,6 +47,7 @@ public class workStatusChecker implements Runnable {
 
     public JobStatus getJobStatus(String mdpjobid) {
         //String rtn = "";
+        log.info("get job mdpjobid="+mdpjobid);
         JobStatus js = threaMap.get(mdpjobid);
 
         if(js == null) {
@@ -56,7 +58,7 @@ public class workStatusChecker implements Runnable {
             js.getCompleteMessage();
         }
 
-        log.debug(mdpjobid+"="+js.getCompleteMessage());
+        log.info(mdpjobid+"="+js.getCompleteMessage());
 
         if(!js.getCompleteMessage().equalsIgnoreCase("Process")) {
             threaMap.remove(mdpjobid);

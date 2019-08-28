@@ -6,6 +6,7 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
 from run_face_raw_engine import main as faceraw
 from run_face_raw_upload import main as facerawupload
+from run_face_merge_engine import main as facemerge
 import time
 import requests, json
 
@@ -34,6 +35,14 @@ face_raw_upload_task = PythonOperator(
     dag=dag,
 )
 
+face_merge_task = PythonOperator(
+    task_id='face_merge',
+    provide_context=True,
+    python_callable=facemerge,
+    dag=dag,
+)
+
 face_raw_task >> face_raw_upload_task
+face_raw_task >> face_merge_task
 #task1 >> task2
 

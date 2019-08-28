@@ -10,7 +10,6 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.util.Date;
 
 @Document(indexName = "#{runConfig.facerawindexName}", type = "faceraw")
-//@Document(indexName = "mdp_my_raw_face", type = "faceraw")
 public class FaceRaw {
     @Id
     //@Field( type = FieldType.Integer)

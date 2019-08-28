@@ -2,11 +2,17 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: DeepmetaSaver
+    name: FacePostExecutorSim
   data:
     elasticsearch:
       cluster-name: docker-cluster
       cluster-nodes: compute3:9300
+
+server:
+  port: 7006
+  servlet:
+    context-path: /mdp/Enginecontrol/v1/face
+
 
 management:
   health:

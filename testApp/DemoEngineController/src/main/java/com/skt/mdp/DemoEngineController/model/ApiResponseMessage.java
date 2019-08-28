@@ -2,7 +2,7 @@ package com.skt.mdp.DemoEngineController.model;
 
 public class ApiResponseMessage {
 
-    private String servieId;
+    private String mdpJobId;
 
     // HttpStatus
     private String status;
@@ -17,8 +17,8 @@ public class ApiResponseMessage {
 
     public ApiResponseMessage() {}
  
-    public ApiResponseMessage(String servieId, String status, String message, String errorCode, String errorMessage, String resultPath) {
-        this.servieId = servieId;
+    public ApiResponseMessage(String mdpJobId, String status, String message, String errorCode, String errorMessage, String resultPath) {
+        this.mdpJobId = mdpJobId;
         this.status = status;
         this.message = message;
         this.errorCode = errorCode;
@@ -26,19 +26,18 @@ public class ApiResponseMessage {
         this.reusltPath = resultPath;
     }
 
-
     /**
-     * @return String return the servieId
+     * @return String return the mdpJobId
      */
-    public String getServieId() {
-        return servieId;
+    public String getMdpJobId() {
+        return this.mdpJobId;
     }
 
     /**
-     * @param servieId the servieId to set
+     * @param servieId the mdpJobId to set
      */
-    public void setServieId(String servieId) {
-        this.servieId = servieId;
+    public void setMdpJobId(String mdpJobId) {
+        this.mdpJobId = mdpJobId;
     }
 
     /**
