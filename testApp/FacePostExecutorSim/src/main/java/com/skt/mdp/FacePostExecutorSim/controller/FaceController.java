@@ -5,7 +5,7 @@ import com.skt.mdp.FacePostExecutorSim.config.runConfig;
 import com.skt.mdp.FacePostExecutorSim.model.ApiResponseMessage;
 import com.skt.mdp.FacePostExecutorSim.model.FacefileReq;
 import com.skt.mdp.FacePostExecutorSim.model.JobStatus;
-import com.skt.mdp.FacePostExecutorSim.service.SaveService;
+//import com.skt.mdp.FacePostExecutorSim.service.SaveService;
 import com.skt.mdp.FacePostExecutorSim.work.workManager;
 
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;

@@ -2,6 +2,7 @@ package com.skt.mdp.DemoEngineController.service;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skt.mdp.DemoEngineController.model.FacefileReq;
 import com.skt.mdp.DemoEngineController.model.JobInfo;
 import com.skt.mdp.DemoEngineController.model.JobStatus;
 import com.skt.mdp.DemoEngineController.work.WorkManager;
@@ -33,6 +34,13 @@ public class FaceEngine {
     public int addJob(JobInfo jobinfo) {
         log.info("[FaceEngine] add job start");
         int rtn = workManager.execute(jobinfo);
+
+        return rtn;
+    }
+
+    public int addMergeJob(FacefileReq facefilereq) {
+        log.info("[FaceEngine] add job start");
+        int rtn = workManager.executeMergeJob(facefilereq);
 
         return rtn;
     }

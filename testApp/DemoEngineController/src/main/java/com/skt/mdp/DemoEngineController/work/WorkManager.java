@@ -1,6 +1,7 @@
 package com.skt.mdp.DemoEngineController.work;
 
 import com.skt.mdp.DemoEngineController.config.RunConfig;
+import com.skt.mdp.DemoEngineController.model.FacefileReq;
 import com.skt.mdp.DemoEngineController.model.JobInfo;
 
 import com.skt.mdp.DemoEngineController.model.JobStatus;
@@ -44,6 +45,12 @@ public class WorkManager {
         executor.shutdown();
 
         checkThread.addJob(jobinfo.getMdpJobId(), future);
+
+        return 1;
+    }
+
+    public int executeMergeJob(FacefileReq facefilereq) {
+
 
         return 1;
     }

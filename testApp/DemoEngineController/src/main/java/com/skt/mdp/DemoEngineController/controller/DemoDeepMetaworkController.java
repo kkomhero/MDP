@@ -3,6 +3,7 @@ package com.skt.mdp.DemoEngineController.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skt.mdp.DemoEngineController.config.RunConfig;
 import com.skt.mdp.DemoEngineController.model.ApiResponseMessage;
+import com.skt.mdp.DemoEngineController.model.FacefileReq;
 import com.skt.mdp.DemoEngineController.model.JobInfo;
 import com.skt.mdp.DemoEngineController.model.JobStatus;
 import com.skt.mdp.DemoEngineController.service.FaceEngine;
@@ -84,6 +85,19 @@ public class DemoDeepMetaworkController {
 
         logger.info("reqcount=" + reqcount);
         return new ResponseEntity<String>(resultJson, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/face-merge", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<String> addMergeJob(@RequestBody FacefileReq facefilereq) {
+
+        logger.info(facefilereq.getMdpJobId() +":"+ facefilereq.getReusltPath());
+
+        int rtn = faceEngine.addMergeJob(facefilereq);
+        System.out.println(rtn);
+
+        String message = "Success";
+        return new ResponseEntity<String>(message, HttpStatus.CREATED);
     }
 
 }
