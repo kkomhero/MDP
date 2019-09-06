@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[%-5level] %d{HH:mm:ss.SSS} [${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}][%thread][%logger{36}][%method:%line] %msg%n
+            </Pattern>
+
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH:-logs}/service.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH:-logs}/service.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>[%-5level] %d{HH:mm:ss.SSS} [${springAppName:-},%X{X-B3-TraceId:-}][%thread][%logger{36}][%method:%line] %msg%n
+            </pattern>
+        </encoder>
+    </appender>
 
     <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
+        <!-- <appender-ref ref="STDOUT"/> -->
+        <appender-ref ref="FILE" />
     </root>
+
 </configuration>
+

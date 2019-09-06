@@ -1,18 +1,18 @@
 spring:
+    profiles:
+        active: dev
     application:
         name: discovery-service
 #    boot:
 #        admin:
 #            url: http://localhost:8762
-
-
 server:
-    port: 38080
+    port: 18080
 
 # -- Eureka
 eureka:
     instance:
-        hostname: 127.0.0.1
+        hostname: 192.168.203.113
     client:
         serviceUrl:
             defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
@@ -22,5 +22,20 @@ eureka:
         enable-self-preservation: false #자가보존모드(client 상태를 받을 수 없는 경우에도 일정기간 동안 레지스트리 유지) 설정
         #wait-time-in-ms-when-sync-empty: 0
 
+uris:
+    baseUrl : http://192.168.203.113:10001/mdp/v1
+    jobcontrollerUrl:
+        baseUrl : ${uris.baseUrl}/job-control-manager
+        serviceStatus : ${uris.jobcontrollerUrl.baseUrl}/services
 
+---
+spring:
+  profiles: dev
+logging:
+  path: /home/mdp/apps/eureka-server/logs
 
+---
+spring:
+  profiles: local
+logging:
+  path: /Users/lamhirh/Documents/workspace/MDP_DEV/logs

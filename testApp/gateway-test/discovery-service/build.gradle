@@ -6,8 +6,10 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.mbg.otdev'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '1.8'
+archivesBaseName = 'discoveryservice'
+//jar.baseName="spring-boot-new-jar-file-name"
 
 repositories {
 	mavenCentral()
