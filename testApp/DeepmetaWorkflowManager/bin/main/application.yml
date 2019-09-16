@@ -1,0 +1,20 @@
+server:
+  port: 8009
+  servlet:
+    context-path: /mdp/Enginecontrol/v1/deepworks
+    
+# eureka client configuration
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://192.168.203.113:18080/eureka
+#      defaultZone: http://localhost:8061/eureka/
+#  instance:
+#    prefer-ip-address: true 
+
+spring:
+  application:
+    name: deepmetawork-manager
+
+
+

@@ -1,0 +1,9 @@
+datasource1:
+  name: racoon_z
+  pass: password
+  url: jdbc:sql://100.100.100.100:4321/racoon_z
+ 
+datasource2:
+  name: racoon_3
+  pass: password1
+  url: jdbc:sql://101.102.103.104:4321/racoon_z
